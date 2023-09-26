@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
         title: const Center(
           child: Text(
             "Nepali Pasal",
-            // style: TextStyle(fontFamily: "Mooli"),
+            style: TextStyle(fontFamily: "Mooli"),
           ),
         ),
       ),
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
           "Namaste & Welcome to Nepali Pasal !!",
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            // fontFamily: "Mooli",
+            fontFamily: "Mooli",
           ),
         ),
       ),

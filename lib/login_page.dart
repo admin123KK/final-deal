@@ -11,6 +11,14 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  bool _obscureText = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,12 +37,20 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 10),
             TextField(
+              obscureText: _obscureText,
               controller: passwordController,
-              decoration: const InputDecoration(
+              decoration:  InputDecoration(
                 hintText: 'Enter your password',
                 labelText: 'Password',
+                
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscureText ? Icons.visibility : Icons.visibility_off,
+                  ),
+                  onPressed: _togglePasswordVisibility,
+                ),
               ),
-              obscureText: true,
+  
             ),
             const SizedBox(
               height: 15,
