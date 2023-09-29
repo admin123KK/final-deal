@@ -39,10 +39,9 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               obscureText: _obscureText,
               controller: passwordController,
-              decoration:  InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'Enter your password',
                 labelText: 'Password',
-                
                 suffixIcon: IconButton(
                   icon: Icon(
                     _obscureText ? Icons.visibility : Icons.visibility_off,
@@ -50,7 +49,6 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: _togglePasswordVisibility,
                 ),
               ),
-  
             ),
             const SizedBox(
               height: 15,
