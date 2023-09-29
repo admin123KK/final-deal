@@ -22,30 +22,33 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-                  children: [
-            Image.network(
-              'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
-              height: 300,
-              width: 300,
-            fit: BoxFit.contain,
-            
-              
-            )
-                  ],
-                ),
-          )),
+      body: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.all(12),
+            color: Colors.green,
+            child: const Text(
+              'Nepal is good ',
+              style: TextStyle(fontFamily: "Mooli"),
+            ),
+          ),
+          const SizedBox(height: 200),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 100),
+            child: Image.network(
+                'https://images.unsplash.com/photo-1578592311070-4fb73aec2d22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80'),
+          )
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xFF00563B),
-        child: const  Text("Login"),
+        backgroundColor: const Color(0xFF00563B),
+        child: const Text("Login"),
         onPressed: () {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => LoginPage(),
+                builder: (context) => const LoginPage(),
               ));
         },
       ),
