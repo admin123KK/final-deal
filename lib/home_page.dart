@@ -12,9 +12,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[850],
       appBar: AppBar(
-        backgroundColor: Color(0xFF00563B),
+        backgroundColor: const Color(0xFF00563B),
         title: const Center(
           child: Text(
             "Nepali Pasal",
@@ -23,22 +23,49 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.all(12),
-            color: Colors.green,
-            child: const Text(
-              'Nepal is good ',
-              style: TextStyle(fontFamily: "Mooli"),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(12),
+              color: Colors.green,
+              child: const Text(
+                'Nepal is good ',
+                style: TextStyle(fontFamily: "Mooli"),
+              ),
             ),
           ),
-          const SizedBox(height: 200),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 100),
-            child: Image.network(
-                'https://images.unsplash.com/photo-1578592311070-4fb73aec2d22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80'),
-          )
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
+              color: Colors.red,
+              child: const Text(
+                'Mt.Everest',
+                style: TextStyle(fontFamily: 'Mooli'),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
+              color: Colors.blue,
+              child: const Text(
+                'Lumbini ',
+                style: TextStyle(fontFamily: 'Mooli'),
+              ),
+            ),
+          ),
+             SizedBox(height: 20), // Add space between containers and images
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircleAvatar()
+          ],
+        ),
+    
         ],
       ),
       floatingActionButton: FloatingActionButton(
