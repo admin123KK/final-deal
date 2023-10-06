@@ -22,51 +22,65 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              margin: const EdgeInsets.all(12),
-              color: Colors.green,
-              child: const Text(
-                'Nepal is good ',
-                style: TextStyle(fontFamily: "Mooli"),
+      body: const Padding(
+        padding: EdgeInsets.fromLTRB(10, 12, 13, 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://th.bing.com/th/id/OIP.w0G393T_igbfOKmejALVEQHaEK?pid=ImgDet&rs=1"),
+                radius: 50,
               ),
             ),
-          ),
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              margin: const EdgeInsets.all(10),
-              color: Colors.red,
-              child: const Text(
-                'Mt.Everest',
-                style: TextStyle(fontFamily: 'Mooli'),
-              ),
+            SizedBox(
+              height: 13,
             ),
-          ),
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              margin: const EdgeInsets.all(10),
-              color: Colors.blue,
-              child: const Text(
-                'Lumbini ',
-                style: TextStyle(fontFamily: 'Mooli'),
-              ),
+            Divider(color: Colors.grey,),
+            Text(
+              'Name',
+              style: TextStyle(color: Colors.grey, letterSpacing: 2.0),
             ),
-          ),
-             SizedBox(height: 20), // Add space between containers and images
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            CircleAvatar()
+            Text(
+              'Aakash Karki',
+              style: TextStyle(
+                  color: Colors.yellow,
+                  letterSpacing: 2.0,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Address',
+              style: TextStyle(letterSpacing: 2.0, color: Colors.grey),
+            ),
+            Text(
+              'Butwal-7',
+              style:
+                  TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.email,
+                  color: Colors.grey,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'karkiaku000@gmail.com',
+                  style: TextStyle(color: Colors.grey),
+                )
+              ],
+            )
           ],
         ),
-    
-        ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFF00563B),
