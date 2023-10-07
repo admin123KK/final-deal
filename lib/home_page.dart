@@ -9,6 +9,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int aakashLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,49 +24,53 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.fromLTRB(10, 12, 13, 15),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(10, 12, 13, 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            const Center(
               child: CircleAvatar(
                 backgroundImage: NetworkImage(
                     "https://th.bing.com/th/id/OIP.w0G393T_igbfOKmejALVEQHaEK?pid=ImgDet&rs=1"),
                 radius: 50,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 13,
             ),
-            Divider(color: Colors.grey,),
-            Text(
+            const Divider(
+              color: Colors.grey,
+            ),
+            const Text(
               'Name',
               style: TextStyle(color: Colors.grey, letterSpacing: 2.0),
             ),
-            Text(
+            const Text(
               'Aakash Karki',
               style: TextStyle(
                   color: Colors.yellow,
                   letterSpacing: 2.0,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
               'Address',
               style: TextStyle(letterSpacing: 2.0, color: Colors.grey),
             ),
-            Text(
+            const Text(
               'Butwal-7',
-              style:
-                  TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.yellow,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2.0),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Row(
+            const Row(
               children: [
                 Icon(
                   Icons.email,
@@ -76,22 +82,67 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   'karkiaku000@gmail.com',
                   style: TextStyle(color: Colors.grey),
-                )
+                ),
               ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'Level',
+              style: TextStyle(letterSpacing: 2.0, color: Colors.grey),
+            ),
+            Text(
+              '$aakashLevel',
+              style: const TextStyle(
+                color: Colors.yellow,
+                fontWeight: FontWeight.bold,
+              ),
             )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF00563B),
-        child: const Text("Login"),
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginPage(),
-              ));
-        },
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
+              },
+              style:
+                  ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
+              child: const Text(
+                'Login',
+                style: TextStyle(
+                  fontFamily: 'Mooli',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 1,
+              vertical: 1,
+            ),
+            child: FloatingActionButton(
+              backgroundColor: Colors.grey[800],
+              child: const Icon(Icons.add),
+              onPressed: () {
+                setState(() {
+                  aakashLevel += 1;
+                });
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
