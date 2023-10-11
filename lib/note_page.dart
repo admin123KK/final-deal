@@ -51,7 +51,7 @@ class _NotePageState extends State<NotePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.only(bottom: 8),
+              padding: const EdgeInsets.only(bottom: 8),
               child: const Text(
                 'Sky Restro & Authentic  Cafe',
                 style:
