@@ -1,5 +1,4 @@
-import 'package:finaldeal/note_page.dart';
-import 'package:finaldeal/quote.page.dart';
+import 'package:finaldeal/quote_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -58,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const  QuotePage()));
+                    MaterialPageRoute(builder: (context) => const QuotePage()));
               },
               style: ButtonStyle(
                 backgroundColor:
