@@ -1,4 +1,4 @@
-import 'package:finaldeal/quote_card.dart';
+import 'package:finaldeal/QuotePage/quote_card.dart';
 import 'package:flutter/material.dart';
 import 'quote.dart';
 

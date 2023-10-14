@@ -1,4 +1,6 @@
-import 'package:finaldeal/quote_page.dart';
+// import 'package:finaldeal/quote_page.dart';
+import 'package:finaldeal/time_page.dart';
+// import 'package:finaldeal/time_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -57,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const QuotePage()));
+                    MaterialPageRoute(builder: (context) => const  TimePage()));
               },
               style: ButtonStyle(
                 backgroundColor:
