@@ -11,10 +11,10 @@ class LoadingPage extends StatefulWidget {
 
 class _LoadingPageState extends State<LoadingPage> {
   void getData() async {
-    Uri url = Uri.parse('https://jsonplaceholder.typicode.com/todos/1');
+    Uri url = Uri.parse('http://worldtimeapi.org/api/timezone/Asia/Kathmandu');
     Response response = await get(url);
     Map data = jsonDecode(response.body);
-    print(data['title']);
+    print(data);
   }
   
 

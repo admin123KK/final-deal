@@ -1,5 +1,5 @@
-import 'package:finaldeal/services/world_time.dart';
 import 'package:flutter/material.dart';
+import 'services/world_time.dart';
 
 class TimePage extends StatefulWidget {
   const TimePage({Key? key}) : super(key: key);
@@ -9,19 +9,20 @@ class TimePage extends StatefulWidget {
 }
 
 class _TimePageState extends State<TimePage> {
+  String datetime = 'utc_offset';
+
   void setupWorldTime() async {
-    String time = 'loading ';
     WorldTime instance = WorldTime(
       location: 'Kathmandu',
-      time: 'Nepal',
+      datetime: 'utc_offset',
       flag: 'nepal.png',
       url: 'Asia/Nepal',
     );
 
     await instance.getTime();
-    print(instance.time);
+    print(instance.datetime);
     setState(() {
-      time = instance.time;
+      datetime = instance.datetime;
     });
   }
 
@@ -33,16 +34,14 @@ class _TimePageState extends State<TimePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+    Scaffold(
       appBar: AppBar(
         title: const Text('World Clock '),
         centerTitle: true,
         elevation: 0,
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(12),
-        child: Text('loading....'),
-      ),
+      body:  Padding(padding: EdgeInsets.all(12), child: Text(datetime)),
     );
   }
 }

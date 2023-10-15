@@ -1,4 +1,6 @@
 // import 'package:finaldeal/quote_page.dart';
+import 'package:finaldeal/loading_page.dart';
+import 'package:finaldeal/services/world_time.dart';
 import 'package:finaldeal/time_page.dart';
 // import 'package:finaldeal/time_page.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const  TimePage()));
+                    MaterialPageRoute(builder: (context) => const TimePage()));
               },
               style: ButtonStyle(
                 backgroundColor:
