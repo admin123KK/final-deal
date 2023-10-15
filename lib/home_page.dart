@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int aakashLevel = 0;
+  int aakashLevel = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -138,6 +138,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 setState(() {
                   aakashLevel += 1;
+    
                 });
               },
             ),

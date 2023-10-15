@@ -1,30 +1,34 @@
-import 'dart:convert';
-
-import 'package:http/http.dart';
+import 'package:finaldeal/services/world_time.dart';
 import 'package:flutter/material.dart';
 
 class TimePage extends StatefulWidget {
-  const TimePage({super.key});
+  const TimePage({Key? key}) : super(key: key);
 
   @override
   State<TimePage> createState() => _TimePageState();
 }
 
 class _TimePageState extends State<TimePage> {
-  void getTime() async {
-    Uri url = Uri.parse('http://worldtimeapi.org/api/timezone/Asia/Kathmandu');
-    Response response = await get(url);
-    Map data = jsonDecode(response.body);
-    //  print(data);
-    String datetime = data['datetime'];
-    DateTime now = DateTime.parse(datetime);
-    print(now);
+  void setupWorldTime() async {
+    String time = 'loading ';
+    WorldTime instance = WorldTime(
+      location: 'Kathmandu',
+      time: 'Nepal',
+      flag: 'nepal.png',
+      url: 'Asia/Nepal',
+    );
+
+    await instance.getTime();
+    print(instance.time);
+    setState(() {
+      time = instance.time;
+    });
   }
 
   @override
   void initState() {
     super.initState();
-    getTime();
+    setupWorldTime();
   }
 
   @override
@@ -35,7 +39,10 @@ class _TimePageState extends State<TimePage> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Text('Nepal'),
+      body: const Padding(
+        padding: EdgeInsets.all(12),
+        child: Text('loading....'),
+      ),
     );
   }
 }
