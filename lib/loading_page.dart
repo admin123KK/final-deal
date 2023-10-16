@@ -1,4 +1,5 @@
 // import 'dart:convert';
+import 'package:finaldeal/time_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:http/http.dart';
 
@@ -11,11 +12,11 @@ class LoadingPage extends StatefulWidget {
   State<LoadingPage> createState() => _LoadingPageState();
 }
 
-
-String utcoffset = "utc_offset";
+Map time = {};
 
 class _LoadingPageState extends State<LoadingPage> {
-  String datetime = 'loading';
+  // String datetime = 'loading';
+
   void setupWorldTime() async {
     WorldTime instance = WorldTime(
       datetime: "2023-10-16T08:57:36.280124+05:45",
@@ -24,10 +25,11 @@ class _LoadingPageState extends State<LoadingPage> {
       url: "Asia/Kathmandu",
     );
     await instance.getTime();
-    print(instance.datetime);
-    setState(() {
-      datetime = instance.datetime;
-    });
+    
+    // print(instance.datetime);
+    // setState(() {
+    //   datetime = instance.datetime;
+    // });
   }
 
   @override
@@ -43,7 +45,7 @@ class _LoadingPageState extends State<LoadingPage> {
         title: const Text('Loadaing Page'),
         centerTitle: true,
       ),
-      body: Text(datetime),
+      body: Text('Namste Nepal'),
     );
   }
 }

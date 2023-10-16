@@ -110,8 +110,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(20.0),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()));
+                Navigator.pushNamed(context, '/login');
               },
               style:
                   ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
@@ -138,7 +137,6 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 setState(() {
                   aakashLevel += 1;
-    
                 });
               },
             ),
