@@ -1,27 +1,39 @@
-import 'dart:convert';
+// import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+// import 'package:http/http.dart';
+
+import 'services/world_time.dart';
 
 class LoadingPage extends StatefulWidget {
-  const LoadingPage({super.key});
+  const LoadingPage({Key? key}) : super(key: key);
 
   @override
   State<LoadingPage> createState() => _LoadingPageState();
 }
 
+
+String utcoffset = "utc_offset";
+
 class _LoadingPageState extends State<LoadingPage> {
-  void getData() async {
-    Uri url = Uri.parse('http://worldtimeapi.org/api/timezone/Asia/Kathmandu');
-    Response response = await get(url);
-    Map data = jsonDecode(response.body);
-    print(data);
+  String datetime = 'loading';
+  void setupWorldTime() async {
+    WorldTime instance = WorldTime(
+      datetime: "2023-10-16T08:57:36.280124+05:45",
+      location: "Kathamandu",
+      flag: "nepal.png",
+      url: "Asia/Kathmandu",
+    );
+    await instance.getTime();
+    print(instance.datetime);
+    setState(() {
+      datetime = instance.datetime;
+    });
   }
-  
 
   @override
   void initState() {
     super.initState();
-    getData();
+    setupWorldTime();
   }
 
   @override
@@ -31,7 +43,7 @@ class _LoadingPageState extends State<LoadingPage> {
         title: const Text('Loadaing Page'),
         centerTitle: true,
       ),
-      body: Text('Loading Screen '),
+      body: Text(datetime),
     );
   }
 }

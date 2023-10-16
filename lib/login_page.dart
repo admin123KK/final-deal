@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const TimePage()));
+                    MaterialPageRoute(builder: (context) => const LoadingPage()));
               },
               style: ButtonStyle(
                 backgroundColor:
