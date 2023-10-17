@@ -21,6 +21,7 @@ class _LoadingPageState extends State<LoadingPage> {
       location: "Kathamandu",
       flag: "nepal.png",
       url: "Asia/Kathmandu",
+      isDayTime: true,
     );
     await instance.getTime();
 
@@ -29,6 +30,7 @@ class _LoadingPageState extends State<LoadingPage> {
       'location': instance.location,
       'flag': instance.flag,
       'datetime': instance.datetime,
+      'isDayTime': instance.isDayTime,
     });
 
     // print(instance.datetime);
@@ -50,7 +52,10 @@ class _LoadingPageState extends State<LoadingPage> {
         title: const Text('Loadaing Page'),
         centerTitle: true,
       ),
-      body: Center(child: SpinKitChasingDots(color: Colors.green[900],)),
+      body: Center(
+          child: SpinKitChasingDots(
+        color: Colors.green[900],
+      )),
     );
   }
 }
