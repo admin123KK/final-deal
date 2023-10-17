@@ -1,6 +1,6 @@
 // import 'dart:convert';
-import 'package:finaldeal/time_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 // import 'package:http/http.dart';
 
 import 'services/world_time.dart';
@@ -11,8 +11,6 @@ class LoadingPage extends StatefulWidget {
   @override
   State<LoadingPage> createState() => _LoadingPageState();
 }
-
-Map time = {};
 
 class _LoadingPageState extends State<LoadingPage> {
   // String datetime = 'loading';
@@ -25,7 +23,14 @@ class _LoadingPageState extends State<LoadingPage> {
       url: "Asia/Kathmandu",
     );
     await instance.getTime();
-    
+
+    // ignore: use_build_context_synchronously
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': instance.location,
+      'flag': instance.flag,
+      'datetime': instance.datetime,
+    });
+
     // print(instance.datetime);
     // setState(() {
     //   datetime = instance.datetime;
@@ -45,7 +50,7 @@ class _LoadingPageState extends State<LoadingPage> {
         title: const Text('Loadaing Page'),
         centerTitle: true,
       ),
-      body: Text('Namste Nepal'),
+      body: Center(child: SpinKitChasingDots(color: Colors.green[900],)),
     );
   }
 }
