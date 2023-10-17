@@ -4,18 +4,18 @@ import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 
 class WorldTime {
-  String datetime;
+  String time;
   String location;
   String flag;
   String url;
-  bool isDayTime;
+  bool isDaytime;
 
   WorldTime(
-      {required this.datetime,
+      {required this.time,
       required this.location,
       required this.flag,
       required this.url,
-      required this.isDayTime});
+      required this.isDaytime});
 
   Future<void> getTime() async {
     try {
@@ -35,11 +35,11 @@ class WorldTime {
       // print(now);
 
       // datetime = now.toString();
-      isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
-      datetime = DateFormat.jm().format(now);
+      isDaytime = now.hour >6 && now.hour< 10?  true : false;
+      time = DateFormat.jm().format(now);
     } catch (e) {
       print("caught error: $e");
-      datetime = 'Something is wrong';
+      time = 'Something is wrong';
     }
   }
 }

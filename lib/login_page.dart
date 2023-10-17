@@ -1,8 +1,4 @@
-// import 'package:finaldeal/quote_page.dart';
-import 'package:finaldeal/loading_page.dart';
-import 'package:finaldeal/services/world_time.dart';
-import 'package:finaldeal/time_page.dart';
-// import 'package:finaldeal/time_page.dart';
+
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {

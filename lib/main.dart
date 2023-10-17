@@ -2,7 +2,7 @@ import 'package:finaldeal/QuotePage/quote_page.dart';
 import 'package:finaldeal/home_page.dart';
 import 'package:finaldeal/loading_page.dart';
 import 'package:finaldeal/login_page.dart';
-import 'package:finaldeal/loki_page.dart';
+import 'package:finaldeal/location_page.dart';
 import 'package:finaldeal/note_page.dart';
 import 'package:finaldeal/time_page.dart';
 import 'package:flutter/material.dart';

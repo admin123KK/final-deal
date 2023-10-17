@@ -1,7 +1,7 @@
-// import 'dart:convert';
+ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-// import 'package:http/http.dart';
+
 
 import 'services/world_time.dart';
 
@@ -17,20 +17,19 @@ class _LoadingPageState extends State<LoadingPage> {
 
   void setupWorldTime() async {
     WorldTime instance = WorldTime(
-      datetime: "2023-10-16T08:57:36.280124+05:45",
+      time: "2023-10-16T08:57:36.280124+05:45",
       location: "Kathamandu",
       flag: "nepal.png",
       url: "Asia/Kathmandu",
-      isDayTime: true,
+      isDaytime: true,
     );
     await instance.getTime();
-
-    // ignore: use_build_context_synchronously
-    Navigator.pushReplacementNamed(context, '/home', arguments: {
+   
+     Navigator.pushReplacementNamed(context, '/LokiPage', arguments: {
       'location': instance.location,
       'flag': instance.flag,
-      'datetime': instance.datetime,
-      'isDayTime': instance.isDayTime,
+      'datetime': instance.time,
+      'isDaytime': instance.isDaytime,
     });
 
     // print(instance.datetime);
