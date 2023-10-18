@@ -1,7 +1,5 @@
- import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 
 import 'services/world_time.dart';
 
@@ -24,8 +22,8 @@ class _LoadingPageState extends State<LoadingPage> {
       isDaytime: true,
     );
     await instance.getTime();
-   
-     Navigator.pushReplacementNamed(context, '/LokiPage', arguments: {
+
+    Navigator.pushReplacementNamed(context, '/LokiPage', arguments: {
       'location': instance.location,
       'flag': instance.flag,
       'datetime': instance.time,
@@ -51,9 +49,9 @@ class _LoadingPageState extends State<LoadingPage> {
         title: const Text('Loadaing Page'),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
           child: SpinKitChasingDots(
-        color: Colors.green[900],
+        color: Color(0xFF00563B),
       )),
     );
   }

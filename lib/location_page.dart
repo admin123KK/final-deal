@@ -40,7 +40,10 @@ class _LokiPageState extends State<LokiPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, '/ChooseLocation');
+                        },
                         icon: const Icon(
                           Icons.edit_location,
                           color: Colors.yellow,
@@ -81,7 +84,7 @@ class _LokiPageState extends State<LokiPage> {
                     children: [
                       Text(
                         data['datetime'],
-                        style: const  TextStyle(
+                        style: const TextStyle(
                             letterSpacing: 1.5,
                             color: Colors.yellow,
                             fontWeight: FontWeight.bold,

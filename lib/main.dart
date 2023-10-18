@@ -3,8 +3,8 @@ import 'package:finaldeal/home_page.dart';
 import 'package:finaldeal/loading_page.dart';
 import 'package:finaldeal/login_page.dart';
 import 'package:finaldeal/location_page.dart';
-import 'package:finaldeal/note_page.dart';
-import 'package:finaldeal/time_page.dart';
+import 'package:finaldeal/QuotePage/note_page.dart';
+import 'package:finaldeal/choose_location.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const HomePage(),
         '/LoginPage': (context) => const LoginPage(),
         '/NotePage': (context) => const NotePage(),
-        '/TimePage': (context) => const TimePage(),
+        '/ChooseLocation': (context) => const ChooseLocation(),
         '/LoadingPage': (context) => const LoadingPage(),
         '/QuotePage': (context) => const QuotePage(),
         '/LokiPage': (context) => const LokiPage(),
