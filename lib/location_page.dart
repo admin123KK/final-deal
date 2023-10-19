@@ -13,7 +13,9 @@ Map data = {};
 class _LokiPageState extends State<LokiPage> {
   @override
   Widget build(BuildContext context) {
-    data = ModalRoute.of(context)?.settings.arguments as Map;
+    data = data.isNotEmpty
+        ? data
+        : ModalRoute.of(context)?.settings.arguments as Map;
     print(data);
 
     String bgImage = data['isDaytime'] ? 'day.image.jpg' : 'night.image.jpg';
@@ -39,15 +41,26 @@ class _LokiPageState extends State<LokiPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, '/ChooseLocation');
-                        },
-                        icon: const Icon(
-                          Icons.edit_location,
-                          color: Colors.yellow,
-                          size: 30,
+                      InkWell(
+                        onTap: () {},
+                        child: IconButton(
+                          onPressed: () async {
+                            dynamic result = await Navigator.pushNamed(
+                                context, '/ChooseLocation');
+                            setState(() {
+                              data = {
+                                'datetime': result['datetime'],
+                                'flag': result['flag'],
+                                'location': result['location'],
+                                'isDaytime': result['isDaytime']
+                              };
+                            });
+                          },
+                          icon: const Icon(
+                            Icons.edit_location,
+                            color: Colors.yellow,
+                            size: 25,
+                          ),
                         ),
                       ),
                       const Text(
@@ -55,6 +68,7 @@ class _LokiPageState extends State<LokiPage> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.yellow,
+                            fontFamily: 'Mooli',
                             fontSize: 30),
                       )
                     ],
@@ -70,7 +84,7 @@ class _LokiPageState extends State<LokiPage> {
                         style: const TextStyle(
                             letterSpacing: 1.5,
                             color: Colors.yellow,
-                            fontSize: 20,
+                            fontSize: 25,
                             fontFamily: 'Mooli',
                             fontWeight: FontWeight.bold),
                       )
@@ -88,7 +102,8 @@ class _LokiPageState extends State<LokiPage> {
                             letterSpacing: 1.5,
                             color: Colors.yellow,
                             fontWeight: FontWeight.bold,
-                            fontSize: 20),
+                            fontFamily: 'Mooli',
+                            fontSize: 45),
                       )
                     ],
                   ),

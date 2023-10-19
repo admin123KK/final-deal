@@ -60,6 +60,18 @@ class _ChooseLocationState extends State<ChooseLocation> {
     ),
   ];
 
+  void updateTime(index) async {
+    WorldTime instance = locations[index];
+
+    await instance.getTime();
+    Navigator.pop(context, {
+      'location': instance.location,
+      'flag': instance.flag,
+      'datetime': instance.time,
+      'isDaytime': instance.isDaytime,
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
@@ -71,15 +83,23 @@ class _ChooseLocationState extends State<ChooseLocation> {
       body: ListView.builder(
           itemCount: locations.length,
           itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                  title: Text(
-                    locations[index].location,
-                  ),
-                  leading: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Image.asset('assets/${locations[index].flag}'),
-                  )),
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 2),
+              child: Card(
+                child: InkWell(
+                  onTap: () {
+                    updateTime(index);
+                  },
+                  child: ListTile(
+                      title: Text(
+                        locations[index].location,
+                      ),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: Image.asset('assets/${locations[index].flag}'),
+                      )),
+                ),
+              ),
             );
           }),
     );

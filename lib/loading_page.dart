@@ -15,7 +15,7 @@ class _LoadingPageState extends State<LoadingPage> {
 
   void setupWorldTime() async {
     WorldTime instance = WorldTime(
-      time: "2023-10-16T08:57:36.280124+05:45",
+      time: "2023-10-18T09:29:26.430419+05:45",
       location: "Kathamandu",
       flag: "nepal.png",
       url: "Asia/Kathmandu",
