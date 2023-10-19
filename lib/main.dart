@@ -1,10 +1,10 @@
 import 'package:finaldeal/QuotePage/quote_page.dart';
 import 'package:finaldeal/home_page.dart';
-import 'package:finaldeal/loading_page.dart';
+import 'package:finaldeal/ListWorldTime/loading_page.dart';
 import 'package:finaldeal/login_page.dart';
-import 'package:finaldeal/location_page.dart';
+import 'package:finaldeal/ListWorldTime/location_page.dart';
 import 'package:finaldeal/QuotePage/note_page.dart';
-import 'package:finaldeal/choose_location.dart';
+import 'package:finaldeal/ListWorldTime/choose_location.dart';
 import 'package:flutter/material.dart';
 
 void main() {
