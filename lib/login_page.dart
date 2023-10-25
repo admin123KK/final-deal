@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,7 +17,9 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       _obscureText = !_obscureText;
     });
+    
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +67,9 @@ class _LoginPageState extends State<LoginPage> {
                 'Login',
               ),
             ),
+            const SizedBox(height: 10),
+            const Text('or'),
+            Text('Register ')
           ],
         ),
       ),

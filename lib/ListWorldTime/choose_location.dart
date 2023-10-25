@@ -11,7 +11,7 @@ class ChooseLocation extends StatefulWidget {
 class _ChooseLocationState extends State<ChooseLocation> {
   List<WorldTime> locations = [
     WorldTime(
-        time: "2023-10-18T09:29:26.430419+05:45",
+        time: "2023-10-20T07:57:16.000000+05:45",
         location: 'Kathmandu',
         flag: 'nepal.png',
         url: 'Asia/Nepal',
