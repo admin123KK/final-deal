@@ -33,45 +33,57 @@ class _SignupPageState extends State<SignupPage> {
         ),
         elevation: 0,
       ),
-      body: Container(
-        padding: const EdgeInsets.all(13),
-        child: Column(
-          children: [
-            TextField(
-              controller: _email,
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                hintText: 'Enter your email',
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: _password,
-              decoration: const InputDecoration(
-                  hintText: 'Enter your password', labelText: 'Password'),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            ElevatedButton(
-                onPressed: () async {
-                  Firebase.initializeApp(
-                    options: DefaultFirebaseOptions.currentPlatform,
-                  );
-                  final email = _email.text;
-                  final password = _password.text;
-                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                      email: email, password: password);
-                },
-                child: const Text('Signup'),
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                  Color(0xFF00563B),
-                )))
-          ],
+      body: FutureBuilder(
+        future: Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
         ),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.done:
+          }
+          return Container(
+
+            padding: const EdgeInsets.all(13),
+            child: Column(
+              children: [
+                TextField(
+                  controller: _email,
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                    hintText: 'Enter your email',
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextField(
+                  controller: _password,
+                  decoration: const InputDecoration(
+                      hintText: 'Enter your password', labelText: 'Password'),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    final email = _email.text;
+                    final password = _password.text;
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        email: email, password: password);
+                  },
+                  child: const Text('Signup'),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      Color(0xFF00563B),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+        defualt: return Text('Loading')
+
       ),
     );
   }
