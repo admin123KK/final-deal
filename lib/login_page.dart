@@ -1,4 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,8 +11,22 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  late final TextEditingController _email;
+  late final TextEditingController _password;
+
+  @override
+  void initState() {
+    _email = TextEditingController();
+    _password = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _email.dispose();
+    _password.dispose();
+    super.dispose();
+  }
 
   bool _obscureText = true;
 
@@ -17,9 +34,7 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       _obscureText = !_obscureText;
     });
-    
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +48,14 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: [
             TextField(
-              controller: emailController,
+              controller: _email,
               decoration: const InputDecoration(
                   hintText: 'Enter your email', labelText: 'Email'),
             ),
             const SizedBox(height: 10),
             TextField(
               obscureText: _obscureText,
-              controller: passwordController,
+              controller: _password,
               decoration: InputDecoration(
                 hintText: 'Enter your password',
                 labelText: 'Password',
@@ -57,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/LoadingPage');
+                Navigator.pushNamed(context, '/SignupPage');
               },
               style: ButtonStyle(
                 backgroundColor:
@@ -69,7 +84,23 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 10),
             const Text('or'),
-            Text('Register ')
+            TextButton(
+              onPressed: () async {
+                await Firebase.initializeApp(
+                    options: DefaultFirebaseOptions.currentPlatform);
+                final email = _email.text;
+                final password = _password.text;
+
+                final userCredential = FirebaseAuth.instance
+                    .createUserWithEmailAndPassword(
+                        email: email, password: password);
+                print(userCredential);
+              },
+              child: const Text(
+                'Register',
+                style: TextStyle(color: Colors.blue),
+              ),
+            )
           ],
         ),
       ),

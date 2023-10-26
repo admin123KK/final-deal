@@ -109,12 +109,12 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(20.0),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/LoginPage');
+                Navigator.pushNamed(context, '/SignupPage');
               },
               style:
                   ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
               child: const Text(
-                'Login',
+                'Lets go',
                 style: TextStyle(
                   fontFamily: 'Mooli',
                   fontWeight: FontWeight.bold,
