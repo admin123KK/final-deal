@@ -97,10 +97,12 @@ class _LoginPageState extends State<LoginPage> {
                             .signInWithEmailAndPassword(
                                 email: email, password: password);
                         print(userCredential);
-                      } catch (e) {
-                        print('something bad ass');
-                        print(e.runtimeType);
-                        print(e);
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == 'user-not-found') {
+                          print('User not found');
+                        } else if (e.code == 'wrong-password') {
+                          print('wrong password');
+                        }
                       }
                     },
                     style: ButtonStyle(
