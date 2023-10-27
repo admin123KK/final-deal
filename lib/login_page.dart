@@ -44,19 +44,21 @@ class _LoginPageState extends State<LoginPage> {
         title: const Text("Login Page "),
       ),
       body: FutureBuilder(
-        future: Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,),
+        future: Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
+        ),
         builder: (context, snapshot) {
-  switch(snapshot.connectionState){
-    
-    case ConnectionState.none:
-      // TODO: Handle this case.
-    case ConnectionState.waiting:
-      // TODO: Handle this case.
-    case ConnectionState.active:
-      // TODO: Handle this case.
-    case ConnectionState.done:
-      // TODO: Handle this case.
-  }
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            // TODO: Handle this case.
+            case ConnectionState.waiting:
+            // TODO: Handle this case.
+            case ConnectionState.active:
+            // TODO: Handle this case.
+            case ConnectionState.done:
+              // TODO: Handle this case.
+              break;
+          }
           return Padding(
               padding: const EdgeInsets.all(6.5),
               child: Column(
@@ -88,12 +90,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   ElevatedButton(
                     onPressed: () async {
-                      await Firebase.initializeApp(
-                          options: DefaultFirebaseOptions.currentPlatform);
                       final email = _email.text;
                       final password = _password.text;
                       try {
-                        final userCredential = FirebaseAuth.instance
+                        final userCredential = await FirebaseAuth.instance
                             .signInWithEmailAndPassword(
                                 email: email, password: password);
                         print(userCredential);
@@ -126,6 +126,6 @@ class _LoginPageState extends State<LoginPage> {
               ));
         },
       ),
-  );
+    );
   }
 }
