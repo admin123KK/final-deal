@@ -76,8 +76,20 @@ class _SignupPageState extends State<SignupPage> {
                   onPressed: () async {
                     final email = _email.text;
                     final password = _password.text;
-                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                        email: email, password: password);
+                    try {
+                      final userCredential = await FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                        email: email,
+                        password: password,
+                      );
+                      print(userCredential);
+                    } on FirebaseAuthException catch (e) {
+                      if (e.code == 'email-already-in-use') {
+                        print('Email has been already used');
+                      } else if (e.code == 'weak-password') {
+                        print('Weak Password try other');
+                      }
+                    }
                   },
                   child: const Text('Signup'),
                   style: ButtonStyle(
