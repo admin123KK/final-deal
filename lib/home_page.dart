@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(20.0),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/SignupPage');
+                Navigator.pushNamed(context, '/LoginPage');
               },
               style:
                   ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),

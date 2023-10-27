@@ -43,67 +43,89 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: const Color(0xFF00563B),
         title: const Text("Login Page "),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(6.5),
-        child: Column(
-          children: [
-            TextField(
-              controller: _email,
-              decoration: const InputDecoration(
-                  hintText: 'Enter your email', labelText: 'Email'),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              obscureText: _obscureText,
-              controller: _password,
-              decoration: InputDecoration(
-                hintText: 'Enter your password',
-                labelText: 'Password',
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _obscureText ? Icons.visibility : Icons.visibility_off,
+      body: FutureBuilder(
+        future: Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,),
+        builder: (context, snapshot) {
+  switch(snapshot.connectionState){
+    
+    case ConnectionState.none:
+      // TODO: Handle this case.
+    case ConnectionState.waiting:
+      // TODO: Handle this case.
+    case ConnectionState.active:
+      // TODO: Handle this case.
+    case ConnectionState.done:
+      // TODO: Handle this case.
+  }
+          return Padding(
+              padding: const EdgeInsets.all(6.5),
+              child: Column(
+                children: [
+                  TextField(
+                    controller: _email,
+                    decoration: const InputDecoration(
+                        hintText: 'Enter your email', labelText: 'Email'),
                   ),
-                  onPressed: _togglePasswordVisibility,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/SignupPage');
-              },
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(const Color(0xFF00563B)),
-              ),
-              child: const Text(
-                'Login',
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Text('or'),
-            TextButton(
-              onPressed: () async {
-                await Firebase.initializeApp(
-                    options: DefaultFirebaseOptions.currentPlatform);
-                final email = _email.text;
-                final password = _password.text;
-
-                final userCredential = FirebaseAuth.instance
-                    .createUserWithEmailAndPassword(
-                        email: email, password: password);
-                print(userCredential);
-              },
-              child: const Text(
-                'Register',
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-          ],
-        ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    obscureText: _obscureText,
+                    controller: _password,
+                    decoration: InputDecoration(
+                      hintText: 'Enter your password',
+                      labelText: 'Password',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscureText
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                        ),
+                        onPressed: _togglePasswordVisibility,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await Firebase.initializeApp(
+                          options: DefaultFirebaseOptions.currentPlatform);
+                      final email = _email.text;
+                      final password = _password.text;
+                      try {
+                        final userCredential = FirebaseAuth.instance
+                            .signInWithEmailAndPassword(
+                                email: email, password: password);
+                        print(userCredential);
+                      } catch (e) {
+                        print('something bad ass');
+                        print(e.runtimeType);
+                        print(e);
+                      }
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(const Color(0xFF00563B)),
+                    ),
+                    child: const Text(
+                      'Login',
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text('or'),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/SignupPage');
+                    },
+                    child: const Text(
+                      'Register',
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  )
+                ],
+              ));
+        },
       ),
-    );
+  );
   }
 }

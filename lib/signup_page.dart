@@ -40,9 +40,15 @@ class _SignupPageState extends State<SignupPage> {
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
+              break;
+            case ConnectionState.none:
+            // TODO: Handle this case.
+            case ConnectionState.waiting:
+            // TODO: Handle this case.
+            case ConnectionState.active:
+            // TODO: Handle this case.
           }
           return Container(
-
             padding: const EdgeInsets.all(13),
             child: Column(
               children: [
@@ -59,7 +65,9 @@ class _SignupPageState extends State<SignupPage> {
                 TextField(
                   controller: _password,
                   decoration: const InputDecoration(
-                      hintText: 'Enter your password', labelText: 'Password'),
+                    hintText: 'Enter your password',
+                    labelText: 'Password',
+                  ),
                 ),
                 const SizedBox(
                   height: 15,
@@ -77,13 +85,21 @@ class _SignupPageState extends State<SignupPage> {
                       Color(0xFF00563B),
                     ),
                   ),
-                )
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text('or'),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/LoginPage');
+                  },
+                  child: const Text('Login '),
+                ),
               ],
             ),
           );
         },
-        defualt: return Text('Loading')
-
       ),
     );
   }
