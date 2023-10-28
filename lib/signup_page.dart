@@ -39,14 +39,14 @@ class _SignupPageState extends State<SignupPage> {
         ),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
-            case ConnectionState.done:
-              break;
             case ConnectionState.none:
             // TODO: Handle this case.
             case ConnectionState.waiting:
             // TODO: Handle this case.
             case ConnectionState.active:
             // TODO: Handle this case.
+            case ConnectionState.done:
+            
           }
           return Container(
             padding: const EdgeInsets.all(13),
@@ -88,7 +88,7 @@ class _SignupPageState extends State<SignupPage> {
                         print('Email has been already used');
                       } else if (e.code == 'weak-password') {
                         print('Weak Password try other');
-                      } else if(e.code == 'invalid-email'){
+                      } else if (e.code == 'invalid-email') {
                         print('The email is invalid');
                       }
                     }
@@ -113,8 +113,6 @@ class _SignupPageState extends State<SignupPage> {
               ],
             ),
           );
-          
-
         },
       ),
     );

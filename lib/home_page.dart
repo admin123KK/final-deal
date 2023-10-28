@@ -1,3 +1,6 @@
+import 'package:finaldeal/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,83 +26,105 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 12, 13, 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Center(
-              child: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    "https://th.bing.com/th/id/OIP.w0G393T_igbfOKmejALVEQHaEK?pid=ImgDet&rs=1"),
-                radius: 50,
-              ),
-            ),
-            const SizedBox(
-              height: 13,
-            ),
-            const Divider(
-              color: Colors.grey,
-            ),
-            const Text(
-              'Name',
-              style: TextStyle(color: Colors.grey, letterSpacing: 2.0),
-            ),
-            const Text(
-              'Aakash Karki',
-              style: TextStyle(
-                  color: Colors.yellow,
-                  letterSpacing: 2.0,
-                  fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'Address',
-              style: TextStyle(letterSpacing: 2.0, color: Colors.grey),
-            ),
-            const Text(
-              'Butwal-7',
-              style: TextStyle(
-                  color: Colors.yellow,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2.0),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Row(
+      body: FutureBuilder(
+        future: Firebase.initializeApp(
+            options: DefaultFirebaseOptions.currentPlatform),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            // TODO: Handle this case.
+            case ConnectionState.waiting:
+            // TODO: Handle this case.
+            case ConnectionState.active:
+            // TODO: Handle this case.
+            case ConnectionState.done:
+              // TODO: Handle this case.
+              final user = FirebaseAuth.instance.currentUser;
+              if (user?.emailVerified ?? false) {
+                print('User');
+              } else {
+                print('Your email is not verified ');
+              }
+          }
+          return Padding(
+            padding: const EdgeInsets.fromLTRB(10, 12, 13, 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(
-                  Icons.email,
+                const Center(
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://th.bing.com/th/id/OIP.w0G393T_igbfOKmejALVEQHaEK?pid=ImgDet&rs=1"),
+                    radius: 50,
+                  ),
+                ),
+                const SizedBox(
+                  height: 13,
+                ),
+                const Divider(
                   color: Colors.grey,
                 ),
-                SizedBox(
-                  width: 10,
+                const Text(
+                  'Name',
+                  style: TextStyle(color: Colors.grey, letterSpacing: 2.0),
+                ),
+                const Text(
+                  'Aakash Karki',
+                  style: TextStyle(
+                      color: Colors.yellow,
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  'Address',
+                  style: TextStyle(letterSpacing: 2.0, color: Colors.grey),
+                ),
+                const Text(
+                  'Butwal-7',
+                  style: TextStyle(
+                      color: Colors.yellow,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2.0),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Row(
+                  children: [
+                    Icon(
+                      Icons.email,
+                      color: Colors.grey,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'karkiaku000@gmail.com',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  'Level',
+                  style: TextStyle(letterSpacing: 2.0, color: Colors.grey),
                 ),
                 Text(
-                  'karkiaku000@gmail.com',
-                  style: TextStyle(color: Colors.grey),
-                ),
+                  '$aakashLevel',
+                  style: const TextStyle(
+                    color: Colors.yellow,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
               ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'Level',
-              style: TextStyle(letterSpacing: 2.0, color: Colors.grey),
-            ),
-            Text(
-              '$aakashLevel',
-              style: const TextStyle(
-                color: Colors.yellow,
-                fontWeight: FontWeight.bold,
-              ),
-            )
-          ],
-        ),
+          );
+        },
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.start,
