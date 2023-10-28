@@ -1,4 +1,8 @@
 import 'package:finaldeal/firebase_options.dart';
+import 'package:finaldeal/signup_page.dart';
+import 'package:finaldeal/verify_page.dart';
+import 'package:finaldeal/verify_page.dart';
+import 'package:finaldeal/verify_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -33,17 +37,20 @@ class _HomePageState extends State<HomePage> {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
             // TODO: Handle this case.
+
             case ConnectionState.waiting:
             // TODO: Handle this case.
             case ConnectionState.active:
             // TODO: Handle this case.
             case ConnectionState.done:
-              // TODO: Handle this case.
               final user = FirebaseAuth.instance.currentUser;
               if (user?.emailVerified ?? false) {
-                print('User');
+                // print(user);
+                return const Text('Done');
               } else {
-                print('Your email is not verified ');
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => VerifyPage(),
+                ));
               }
           }
           return Padding(

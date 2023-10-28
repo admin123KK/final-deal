@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class VerifyPage extends StatelessWidget {
@@ -14,31 +16,19 @@ class VerifyPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Color(0xFF00563B),
       ),
-      // body: FutureBuilder(
-      //   future: Firebase.initializeApp(
-      //       options: DefaultFirebaseOptions.currentPlatform),
-      //   builder: (context, snapshot) {
-      //     switch (snapshot.connectionState) {
-      //       case ConnectionState.none:
-      //       // TODO: Handle this case.
-      //       case ConnectionState.waiting:
-      //       // TODO: Handle this case.
-      //       case ConnectionState.active:
-      //       // TODO: Handle this case.
-      //       case ConnectionState.done:
-      //         final user = FirebaseAuth.instance.currentUser;
-
-      //         if (user?.emailVerified ?? false) {
-      //           print('user ');
-      //         } else {
-      //           print('Your are not verify your email first');
-      //         }
-      //         return const Text('DOne');
-      //       default:
-      //         return const Text('Loading');
-      //     }
-      //   },
-      // ),
+      body: Column(children: [
+        Text('Verify Email address :'),
+        TextButton(
+            onPressed: () async {
+              final user = FirebaseAuth.instance.currentUser;
+              await user?.sendEmailVerification();
+            },
+            child: const Text(
+              'Verify Email',
+              style:
+                  TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+            ))
+      ]),
     );
   }
 }
