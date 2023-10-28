@@ -88,6 +88,8 @@ class _SignupPageState extends State<SignupPage> {
                         print('Email has been already used');
                       } else if (e.code == 'weak-password') {
                         print('Weak Password try other');
+                      } else if(e.code == 'invalid-email'){
+                        print('The email is invalid');
                       }
                     }
                   },
@@ -111,6 +113,8 @@ class _SignupPageState extends State<SignupPage> {
               ],
             ),
           );
+          
+
         },
       ),
     );

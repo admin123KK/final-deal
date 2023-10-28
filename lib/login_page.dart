@@ -1,3 +1,4 @@
+import 'package:finaldeal/verify_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
@@ -102,8 +103,11 @@ class _LoginPageState extends State<LoginPage> {
                           print('User not found');
                         } else if (e.code == 'wrong-password') {
                           print('wrong password');
+                        } else {
+                          print(e.code);
                         }
                       }
+                      Navigator.pushNamed(context, '/VerifyPage');
                     },
                     style: ButtonStyle(
                       backgroundColor:

@@ -5,6 +5,7 @@ import 'package:finaldeal/login_page.dart';
 import 'package:finaldeal/ListWorldTime/location_page.dart';
 import 'package:finaldeal/QuotePage/note_page.dart';
 import 'package:finaldeal/ListWorldTime/choose_location.dart';
+import 'package:finaldeal/verify_page.dart';
 import 'signup_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_core/firebase_core.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/QuotePage': (context) => const QuotePage(),
         '/LokiPage': (context) => const LokiPage(),
         '/SignupPage': (context) => const SignupPage(),
+        '/VerifyPage': (context) => const VerifyPage(),
       },
       debugShowCheckedModeBanner: false,
     );
