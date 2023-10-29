@@ -1,8 +1,11 @@
+import 'package:finaldeal/ListWorldTime/loading_page.dart';
 import 'package:finaldeal/firebase_options.dart';
-import 'package:finaldeal/signup_page.dart';
+import 'package:finaldeal/login_page.dart';
 import 'package:finaldeal/verify_page.dart';
-import 'package:finaldeal/verify_page.dart';
-import 'package:finaldeal/verify_page.dart';
+// import 'package:finaldeal/signup_page.dart';
+// import 'package:finaldeal/verify_page.dart';
+// import 'package:finaldeal/verify_page.dart';
+// import 'package:finaldeal/verify_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,23 +39,23 @@ class _HomePageState extends State<HomePage> {
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
-            // TODO: Handle this case.
 
+            // TODO: Handle this case.r
             case ConnectionState.waiting:
             // TODO: Handle this case.
             case ConnectionState.active:
             // TODO: Handle this case.
             case ConnectionState.done:
               final user = FirebaseAuth.instance.currentUser;
-              if (user?.emailVerified ?? false) {
-                // print(user);
-                return const Text('Done');
-              } else {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => VerifyPage(),
-                ));
+              if (user != null) {
+                if (user.emailVerified) {
+                  return const LoadingPage();
+                } else {
+                  return const VerifyPage();
+                }
               }
           }
+
           return Padding(
             padding: const EdgeInsets.fromLTRB(10, 12, 13, 15),
             child: Column(
@@ -146,7 +149,7 @@ class _HomePageState extends State<HomePage> {
               style:
                   ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
               child: const Text(
-                'Lets go',
+                'Let\'s go',
                 style: TextStyle(
                   fontFamily: 'Mooli',
                   fontWeight: FontWeight.bold,
@@ -158,10 +161,7 @@ class _HomePageState extends State<HomePage> {
             width: 20,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 1,
-              vertical: 1,
-            ),
+            padding: const EdgeInsets.all(20.0),
             child: FloatingActionButton(
               backgroundColor: Colors.grey[800],
               child: const Icon(Icons.add),
