@@ -1,14 +1,14 @@
 import 'package:finaldeal/QuotePage/quote_page.dart';
-import 'package:finaldeal/home_page.dart';
 import 'package:finaldeal/ListWorldTime/loading_page.dart';
 import 'package:finaldeal/login_page.dart';
 import 'package:finaldeal/ListWorldTime/location_page.dart';
 import 'package:finaldeal/QuotePage/note_page.dart';
 import 'package:finaldeal/ListWorldTime/choose_location.dart';
+import 'package:finaldeal/main_page.dart';
+import 'package:finaldeal/ui_page.dart';
 import 'package:finaldeal/verify_page.dart';
 import 'signup_page.dart';
 import 'package:flutter/material.dart';
-// import 'package:firebase_core/firebase_core.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       // home: HomePage(),
       routes: {
-        '/': (context) => const HomePage(),
+        '/': (context) => const MainPage(),
         '/LoginPage': (context) => const LoginPage(),
         '/NotePage': (context) => const NotePage(),
         '/ChooseLocation': (context) => const ChooseLocation(),
@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/LokiPage': (context) => const LokiPage(),
         '/SignupPage': (context) => const SignupPage(),
         '/VerifyPage': (context) => const VerifyPage(),
+        '/Uipage': (context) => const UiPage(),
       },
       debugShowCheckedModeBanner: false,
     );
