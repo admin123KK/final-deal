@@ -1,4 +1,5 @@
 import 'package:finaldeal/ListWorldTime/loading_page.dart';
+import 'package:finaldeal/QuotePage/note_page.dart';
 import 'package:finaldeal/firebase_options.dart';
 import 'package:finaldeal/login_page.dart';
 import 'package:finaldeal/verify_page.dart';
@@ -18,7 +19,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int aakashLevel = 1;
+  // int aakashLevel = 1
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +47,7 @@ class _HomePageState extends State<HomePage> {
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
-
+              break;
             // TODO: Handle this case.r
             case ConnectionState.waiting:
             // TODO: Handle this case.
@@ -49,8 +57,9 @@ class _HomePageState extends State<HomePage> {
               final user = FirebaseAuth.instance.currentUser;
               if (user != null) {
                 if (user.emailVerified) {
-                  return const LoadingPage();
+                  return const NotePage();
                 } else {
+                  print('verify email first');
                   return const VerifyPage();
                 }
               }
@@ -125,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(letterSpacing: 2.0, color: Colors.grey),
                 ),
                 Text(
-                  '$aakashLevel',
+                  'Counter: $_counter',
                   style: const TextStyle(
                     color: Colors.yellow,
                     fontWeight: FontWeight.bold,
@@ -165,11 +174,7 @@ class _HomePageState extends State<HomePage> {
             child: FloatingActionButton(
               backgroundColor: Colors.grey[800],
               child: const Icon(Icons.add),
-              onPressed: () {
-                setState(() {
-                  aakashLevel += 1;
-                });
-              },
+              onPressed: _incrementCounter,
             ),
           ),
         ],

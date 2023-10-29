@@ -1,3 +1,4 @@
+import 'package:finaldeal/signup_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
@@ -56,8 +57,7 @@ class _LoginPageState extends State<LoginPage> {
             case ConnectionState.active:
             // TODO: Handle this case.
             case ConnectionState.done:
-              // TODO: Handle this case.
-              break;
+            // TODO: Handle this case.
           }
           return Padding(
               padding: const EdgeInsets.all(6.5),
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                           print('User not found');
                         } else if (e.code == 'wrong-password') {
                           print('wrong password');
-                        } else  if (e.code == 'invalid-email'){
+                        } else if (e.code == 'invalid-email') {
                           print('Invalid email address check once');
                         }
                       }
@@ -119,7 +119,8 @@ class _LoginPageState extends State<LoginPage> {
                   const Text('or'),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/SignupPage');
+                      Navigator.of(context)
+                          .pushNamedAndRemoveUntil('/SignupPage', (route) => false);
                     },
                     child: const Text(
                       'Register',
