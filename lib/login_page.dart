@@ -1,4 +1,3 @@
-import 'package:finaldeal/signup_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
@@ -119,8 +118,8 @@ class _LoginPageState extends State<LoginPage> {
                   const Text('or'),
                   TextButton(
                     onPressed: () {
-                      Navigator.of(context)
-                          .pushNamedAndRemoveUntil('/SignupPage', (route) => false);
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/SignupPage', (route) => false);
                     },
                     child: const Text(
                       'Register',

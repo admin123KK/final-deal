@@ -1,10 +1,12 @@
+import 'package:finaldeal/ui_page.dart';
+import 'package:finaldeal/verify_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,25 +16,19 @@ class HomePage extends StatelessWidget {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
-          // TODO: Handle this case.
           case ConnectionState.waiting:
-          // TODO: Handle this case.
           case ConnectionState.active:
-          // TODO: Handle this case.
           case ConnectionState.done:
-            // TODO: Handle this case.
-
             final user = FirebaseAuth.instance.currentUser;
             if (user != null) {
               if (user.emailVerified) {
-                print('email is verified');
+                return UiPage();
               } else {
-                print('email is not verifed');
+                return VerifyPage();
               }
             }
         }
         return const Text('Done');
-
       },
     );
   }

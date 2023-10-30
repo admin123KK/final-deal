@@ -1,5 +1,6 @@
 import 'package:finaldeal/QuotePage/quote_page.dart';
 import 'package:finaldeal/ListWorldTime/loading_page.dart';
+import 'package:finaldeal/home_page.dart';
 import 'package:finaldeal/login_page.dart';
 import 'package:finaldeal/ListWorldTime/location_page.dart';
 import 'package:finaldeal/QuotePage/note_page.dart';
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
         '/LokiPage': (context) => const LokiPage(),
         '/SignupPage': (context) => const SignupPage(),
         '/VerifyPage': (context) => const VerifyPage(),
-        '/Uipage': (context) => const UiPage(),
+        '/UiPage': (context) => const UiPage(),
+        '/HomePage': (context) => const HomePage(),
       },
       debugShowCheckedModeBanner: false,
     );
