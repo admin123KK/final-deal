@@ -12,7 +12,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform),
+        options: DefaultFirebaseOptions.currentPlatform,
+      ),
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
@@ -22,9 +23,10 @@ class HomePage extends StatelessWidget {
             final user = FirebaseAuth.instance.currentUser;
             if (user != null) {
               if (user.emailVerified) {
-                return UiPage();
+                // print("email is verified" + user.emailVerified.toString());
+                return const UiPage();
               } else {
-                return VerifyPage();
+                return const VerifyPage();
               }
             }
         }

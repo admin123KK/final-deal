@@ -14,6 +14,7 @@ class _UiPageState extends State<UiPage> {
       appBar: AppBar(
         title: const Text('Ui Page'),
       ),
+      body: Text('Hello Namaste'),
     );
   }
 }
