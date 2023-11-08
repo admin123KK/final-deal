@@ -18,8 +18,12 @@ class _UiPageState extends State<UiPage> {
         title: const Text('Ui Page'),
         actions: [
           PopupMenuButton<MenuAction>(
-            onSelected: (value) {
-              devtools.log(value.toString());
+            onSelected: (value) async {
+              switch (value) {
+                case MenuAction.logout:
+                  final showLogout = await showLogOutDialog(context);
+                  devtools.log(showLogout.toString());
+              }
             },
             itemBuilder: (context) {
               return [
@@ -35,4 +39,28 @@ class _UiPageState extends State<UiPage> {
       body: const Text('Hello Namaste'),
     );
   }
+}
+
+Future<bool> showLogOutDialog(BuildContext context) {
+  return showDialog<bool>(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('sign out'),
+        content: const Text(' Are you  sure you want  to logout ?'),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: const Text('Cancel')),
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: const Text('Logout'))
+        ],
+      );
+    },
+  ).then((value) => value ?? false);
 }
