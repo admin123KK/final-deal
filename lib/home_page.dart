@@ -1,3 +1,4 @@
+import 'package:finaldeal/login_page.dart';
 import 'package:finaldeal/ui_page.dart';
 import 'package:finaldeal/verify_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,18 +20,19 @@ class HomePage extends StatelessWidget {
           case ConnectionState.none:
           case ConnectionState.waiting:
           case ConnectionState.active:
+            break;
           case ConnectionState.done:
             final user = FirebaseAuth.instance.currentUser;
             if (user != null) {
               if (user.emailVerified) {
-                // print("email is verified" + user.emailVerified.toString());
-                return const UiPage();
+                // print('email is verified ' + user.emailVerified.toString());
+                return UiPage();
               } else {
                 return const VerifyPage();
               }
             }
         }
-        return const Text('Done');
+        return LoginPage();
       },
     );
   }
