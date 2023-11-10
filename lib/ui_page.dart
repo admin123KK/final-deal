@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 
@@ -21,8 +22,13 @@ class _UiPageState extends State<UiPage> {
             onSelected: (value) async {
               switch (value) {
                 case MenuAction.logout:
-                  final showLogout = await showLogOutDialog(context);
-                  devtools.log(showLogout.toString());
+                  final shouldLogout = await showLogOutDialog(context);
+                  if (shouldLogout) {
+                    await FirebaseAuth.instance.signOut();
+
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil('/LoginPage', (_) => false);
+                  }
               }
             },
             itemBuilder: (context) {
@@ -58,7 +64,10 @@ Future<bool> showLogOutDialog(BuildContext context) {
               onPressed: () {
                 Navigator.of(context).pop(true);
               },
-              child: const Text('Logout'))
+              child: const Text(
+                'Logout',
+                style: TextStyle(color: Colors.red),
+              ))
         ],
       );
     },
