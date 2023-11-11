@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
+import 'dart:developer' as devtools show log;
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -46,7 +47,6 @@ class _SignupPageState extends State<SignupPage> {
             case ConnectionState.active:
             // TODO: Handle this case.
             case ConnectionState.done:
-            
           }
           return Container(
             padding: const EdgeInsets.all(13),
@@ -82,18 +82,18 @@ class _SignupPageState extends State<SignupPage> {
                         email: email,
                         password: password,
                       );
-                      print(userCredential);
+                      devtools.log(userCredential.toString());
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'email-already-in-use') {
-                        print('Email has been already used');
+                        devtools.log('Email has been already used');
                       } else if (e.code == 'weak-password') {
-                        print('Weak Password try other');
+                        devtools.log('Weak Password try other');
                       } else if (e.code == 'invalid-email') {
-                        print('The email is invalid');
+                        devtools.log('The email is invalid');
                       }
                     }
                   },
-                  child: const Text('Signup'),
+                  child: const  Text('Signup'),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
                       Color(0xFF00563B),
