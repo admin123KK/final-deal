@@ -21,11 +21,13 @@ class _VerifyPageState extends State<VerifyPage> {
         backgroundColor: Color(0xFF00563B),
       ),
       body: Column(children: [
-       const  Text('Verify Email address :'),
+        const Text('Verify Email address :'),
         TextButton(
             onPressed: () async {
               final user = FirebaseAuth.instance.currentUser;
               await user?.sendEmailVerification();
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('/LoginPage', (route) => false);
             },
             child: const Text(
               'Verify Email',

@@ -96,14 +96,15 @@ class _LoginPageState extends State<LoginPage> {
                         final userCredential = await FirebaseAuth.instance
                             .signInWithEmailAndPassword(
                                 email: email, password: password);
-                        devtools.log(userCredential.toString());
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            '/NotePage', (route) => false);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'user-not-found') {
-                     devtools.log('User not found');
+                          devtools.log('User not found');
                         } else if (e.code == 'wrong-password') {
-                        devtools.log('wrong password');
+                          devtools.log('wrong password');
                         } else if (e.code == 'invalid-email') {
-                        devtools.log('Invalid email address check once');
+                          devtools.log('Invalid email address check once');
                         }
                       }
                     },

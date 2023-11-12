@@ -82,7 +82,8 @@ class _SignupPageState extends State<SignupPage> {
                         email: email,
                         password: password,
                       );
-                      devtools.log(userCredential.toString());
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/VerifyPage', (route) => false);
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'email-already-in-use') {
                         devtools.log('Email has been already used');
@@ -93,7 +94,7 @@ class _SignupPageState extends State<SignupPage> {
                       }
                     }
                   },
-                  child: const  Text('Signup'),
+                  child: const Text('Signup'),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
                       Color(0xFF00563B),
