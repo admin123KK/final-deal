@@ -1,3 +1,4 @@
+import 'package:finaldeal/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -86,11 +87,14 @@ class _SignupPageState extends State<SignupPage> {
                           '/VerifyPage', (route) => false);
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'email-already-in-use') {
-                        devtools.log('Email has been already used');
+                        // devtools.log('Email has been already used');
+                        showErrorDialog(context, 'Email is already used ');
                       } else if (e.code == 'weak-password') {
-                        devtools.log('Weak Password try other');
+                        // devtools.log('Weak Password try other');
+                        showErrorDialog(context, 'Weam Password try another');
                       } else if (e.code == 'invalid-email') {
-                        devtools.log('The email is invalid');
+                        // devtools.log('The email is invalid');
+                        showErrorDialog(context, 'Email is invalid');
                       }
                     }
                   },
@@ -118,4 +122,23 @@ class _SignupPageState extends State<SignupPage> {
       ),
     );
   }
+}
+
+Future<void> showErrorDialog(BuildContext context, String text) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('An  error occured'),
+        content: Text(text),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('ok'))
+        ],
+      );
+    },
+  );
 }

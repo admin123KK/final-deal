@@ -93,18 +93,21 @@ class _LoginPageState extends State<LoginPage> {
                       final email = _email.text;
                       final password = _password.text;
                       try {
-                        final userCredential = await FirebaseAuth.instance
-                            .signInWithEmailAndPassword(
-                                email: email, password: password);
+                        await FirebaseAuth.instance.signInWithEmailAndPassword(
+                            email: email, password: password);
                         Navigator.of(context).pushNamedAndRemoveUntil(
                             '/NotePage', (route) => false);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'user-not-found') {
-                          devtools.log('User not found');
+                          await showErrorDialog(context, 'User not found');
                         } else if (e.code == 'wrong-password') {
-                          devtools.log('wrong password');
+                          await showErrorDialog(
+                            context,
+                            'Wrong Password !!',
+                          );
                         } else if (e.code == 'invalid-email') {
-                          devtools.log('Invalid email address check once');
+                          // devtools.log('Invalid email address check once');
+                         showErrorDialog(context, 'Email is invalid!!');
                         }
                       }
                     },
@@ -134,4 +137,26 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+}
+
+Future<void> showErrorDialog(
+  BuildContext context,
+  String text,
+) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('An error occured'),
+        content: Text(text),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'))
+        ],
+      );
+    },
+  );
 }
