@@ -1,9 +1,7 @@
-import 'package:finaldeal/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
-import 'dart:developer' as devtools show log;
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -78,7 +76,7 @@ class _SignupPageState extends State<SignupPage> {
                     final email = _email.text;
                     final password = _password.text;
                     try {
-                      final userCredential = await FirebaseAuth.instance
+                      await FirebaseAuth.instance
                           .createUserWithEmailAndPassword(
                         email: email,
                         password: password,

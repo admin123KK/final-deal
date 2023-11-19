@@ -26,7 +26,10 @@ class _MainPageState extends State<MainPage> {
         title: const Center(
           child: Text(
             "Nepali Pasal",
-            style: TextStyle(fontFamily: "Mooli"),
+            style: TextStyle(
+              fontFamily: "Mooli",
+              color: Colors.white,
+            ),
           ),
         ),
       ),
@@ -124,6 +127,7 @@ class _MainPageState extends State<MainPage> {
                 style: TextStyle(
                   fontFamily: 'Mooli',
                   fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -132,10 +136,13 @@ class _MainPageState extends State<MainPage> {
             width: 20,
           ),
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const  EdgeInsets.fromLTRB(0, 10, 10, 10),
             child: FloatingActionButton(
               backgroundColor: Colors.grey[800],
-              child: const Icon(Icons.add),
+              child:  Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
               onPressed: _incrementCounter,
             ),
           ),

@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
 enum MenuAction { logout }
 
 class UiPage extends StatefulWidget {
@@ -16,7 +15,8 @@ class _UiPageState extends State<UiPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ui Page'),
+        backgroundColor:const  Color(0xFF00563B),
+        title: const Text('Ui Page', style: TextStyle(color: Colors.white),),
         actions: [
           PopupMenuButton<MenuAction>(
             onSelected: (value) async {
@@ -43,6 +43,7 @@ class _UiPageState extends State<UiPage> {
         ],
       ),
       body: const Text('Hello Namaste'),
+       backgroundColor: Colors.grey[200],
     );
   }
 }
