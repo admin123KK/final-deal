@@ -30,6 +30,8 @@ class HomePage extends StatelessWidget {
               } else {
                 return const VerifyPage();
               }
+            } else {
+              return const LoginPage();
             }
         }
         return LoginPage();

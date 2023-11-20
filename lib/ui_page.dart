@@ -15,8 +15,11 @@ class _UiPageState extends State<UiPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:const  Color(0xFF00563B),
-        title: const Text('Ui Page', style: TextStyle(color: Colors.white),),
+        backgroundColor: const Color(0xFF00563B),
+        title: const Text(
+          'Ui Page',
+          style: TextStyle(color: Colors.white),
+        ),
         actions: [
           PopupMenuButton<MenuAction>(
             onSelected: (value) async {
@@ -43,7 +46,7 @@ class _UiPageState extends State<UiPage> {
         ],
       ),
       body: const Text('Hello Namaste'),
-       backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[200],
     );
   }
 }

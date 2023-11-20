@@ -1,3 +1,4 @@
+import 'package:finaldeal/verify_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -81,8 +82,9 @@ class _SignupPageState extends State<SignupPage> {
                         email: email,
                         password: password,
                       );
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/VerifyPage', (route) => false);
+                      final user = FirebaseAuth.instance.currentUser;
+                      await user?.sendEmailVerification();
+                      Navigator.of(context).pushNamed('/VerifyPage');
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'email-already-in-use') {
                         // devtools.log('Email has been already used');

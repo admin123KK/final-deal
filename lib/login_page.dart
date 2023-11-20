@@ -110,6 +110,8 @@ class _LoginPageState extends State<LoginPage> {
                         } else if (e.code == 'invalid-email') {
                           // devtools.log('Invalid email address check once');
                           showErrorDialog(context, 'Email is invalid!!');
+                        } else {
+                          print('Error: ${e.code}');
                         }
                       }
                     },
