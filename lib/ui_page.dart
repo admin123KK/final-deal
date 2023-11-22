@@ -14,46 +14,46 @@ class _UiPageState extends State<UiPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color(0xFF00563B),
-          title: const Text(
-            'Ui Page',
-            style: TextStyle(color: Colors.white),
-          ),
-          actions: [
-            PopupMenuButton<MenuAction>(
-              onSelected: (value) async {
-                switch (value) {
-                  case MenuAction.logout:
-                    final shouldLogout = await showLogOutDialog(context);
-                    if (shouldLogout) {
-                      await FirebaseAuth.instance.signOut();
-
-                      Navigator.of(context)
-                          .pushNamedAndRemoveUntil('/LoginPage', (_) => false);
-                    }
-                }
-              },
-              itemBuilder: (context) {
-                return [
-                  PopupMenuItem<MenuAction>(
-                    value: MenuAction.logout,
-                    child: const Text('Logout'),
-                  )
-                ];
-              },
-            )
-          ],
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF00563B),
+        title: const Text(
+          'Ui Page',
+          style: TextStyle(color: Colors.white),
         ),
-        body: Container(
-          padding: EdgeInsets.fromLTRB(20, 10, 10, 40),
-          alignment: Alignment.topLeft,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              image: DecorationImage(
-                  image: AssetImage('assets/sky.image.png'),
-                  fit: BoxFit.contain)),
-        ));
+        actions: [
+          PopupMenuButton<MenuAction>(
+            onSelected: (value) async {
+              switch (value) {
+                case MenuAction.logout:
+                  final shouldLogout = await showLogOutDialog(context);
+                  if (shouldLogout) {
+                    await FirebaseAuth.instance.signOut();
+
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil('/LoginPage', (_) => false);
+                  }
+              }
+            },
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem<MenuAction>(
+                  value: MenuAction.logout,
+                  child: const Text('Logout'),
+                )
+              ];
+            },
+          )
+        ],
+      ),
+      body: Container(
+        padding: EdgeInsets.all(16),
+        alignment: Alignment.topCenter,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/sky.image.png'),
+                fit: BoxFit.contain)),
+      ),
+    );
   }
 }
 
