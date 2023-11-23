@@ -45,13 +45,23 @@ class _UiPageState extends State<UiPage> {
           )
         ],
       ),
-      body: Container(
-        padding: EdgeInsets.all(16),
-        alignment: Alignment.topCenter,
-        decoration: BoxDecoration(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Container(
+          height: 400,
+        width: 400,
+          padding: const EdgeInsets.all(20),
+          alignment: Alignment.topCenter,
+          decoration: const BoxDecoration(
+            color: Colors.green,
+
             image: DecorationImage(
-                image: AssetImage('assets/sky.image.png'),
-                fit: BoxFit.contain)),
+
+            image: AssetImage('assets/sky.image.png'),
+            fit: BoxFit.cover),
+          ),
+          child: const Text('Namste', style: TextStyle(color: Colors.white),),
+        ),
       ),
     );
   }
