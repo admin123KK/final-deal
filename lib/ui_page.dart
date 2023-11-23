@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 enum MenuAction { logout }
 
@@ -45,22 +46,103 @@ class _UiPageState extends State<UiPage> {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Container(
-          height: 400,
-        width: 400,
-          padding: const EdgeInsets.all(20),
-          alignment: Alignment.topCenter,
-          decoration: const BoxDecoration(
-            color: Colors.green,
-
-            image: DecorationImage(
-
-            image: AssetImage('assets/sky.image.png'),
-            fit: BoxFit.cover),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Container(
+                height: 400,
+                width: 400,
+                padding: const EdgeInsets.all(20),
+                alignment: Alignment.topLeft,
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                  image: DecorationImage(
+                      image: AssetImage('assets/sky.image.png'),
+                      fit: BoxFit.cover),
+                ),
+                child: const Text(
+                  'Namaste',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Container(
+                  height: 400,
+                  width: 400,
+                  padding: const EdgeInsets.all(20),
+                  alignment: Alignment.topCenter,
+                  decoration: const BoxDecoration(
+                    color: Colors.green,
+                    image: DecorationImage(
+                        image: AssetImage('assets/sky.image.png'),
+                        fit: BoxFit.cover),
+                  ),
+                  child: const Text(
+                    'Namaste',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+                child: Padding(
+                  
+                  padding: const EdgeInsets.all(20),
+                  child: Container(
+                    height: 400,
+                    width: 400,
+                    padding: const EdgeInsets.all(20),
+                    alignment: Alignment.topRight,
+                    decoration: const BoxDecoration(
+                      color: Colors.green,
+                      image: DecorationImage(
+                          image: AssetImage('assets/sky.image.png'),
+                          fit: BoxFit.cover),
+                    ),
+                    child: const Text(
+                      'Namaste',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+              SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Container(
+                    height: 400,
+                    width: 400,
+                    padding: const EdgeInsets.all(20),
+                    alignment: Alignment.topRight,
+                  
+                    decoration: const BoxDecoration(
+                      color: Colors.green,
+                      image: DecorationImage(
+                          image: AssetImage('assets/sky.image.png'),
+                          fit: BoxFit.cover),
+                    ),
+                    child: const Text(
+                      'Namaste',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-          child: const Text('Namste', style: TextStyle(color: Colors.white),),
         ),
       ),
     );
