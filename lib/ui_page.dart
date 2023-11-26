@@ -56,18 +56,37 @@ class _UiPageState extends State<UiPage> {
                 height: 300,
                 width: 300,
                 padding: const EdgeInsets.all(20),
-                alignment: Alignment.topLeft,
+                alignment: Alignment.topCenter,
                 decoration: const BoxDecoration(
                   color: Colors.green,
                   image: DecorationImage(
                       image: AssetImage('assets/sky.image.png'),
                       fit: BoxFit.cover),
                 ),
-                child: const Text(
-                  'Namaste',
-                  style: TextStyle(color: Colors.white),
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Text(
+                        'Namaste',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Mooli',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Text(
+                        '\$10',
+                        style: TextStyle(
+                            color: Colors.green, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
                 ),
-            
               ),
               const SizedBox(
                 width: 20,
@@ -85,24 +104,30 @@ class _UiPageState extends State<UiPage> {
                         image: AssetImage('assets/sky.image.png'),
                         fit: BoxFit.cover),
                   ),
-                  child:  const  Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                // crossAxisAlignment: CrossAxisAlignment.end,
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Align(
                         alignment: Alignment.topCenter,
-                    
-                   child: Text(
-                        'Namaste',
-                        style: TextStyle(color: Colors.white),
-                      ),),
-               Align(
-                    alignment: Alignment.bottomRight,
-                    child: Text('\$10', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),),
-                   )
+                        child: Text(
+                          'Namaste',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Mooli'),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Text(
+                          '\$10',
+                          style: TextStyle(
+                              color: Colors.green, fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ],
                   ),
-                
                 ),
               ),
               const SizedBox(
@@ -116,17 +141,37 @@ class _UiPageState extends State<UiPage> {
                     height: 300,
                     width: 300,
                     padding: const EdgeInsets.all(20),
-                    alignment: Alignment.topRight,
+                    alignment: Alignment.topCenter,
                     decoration: const BoxDecoration(
                       color: Colors.green,
                       image: DecorationImage(
                           image: AssetImage('assets/sky.image.png'),
                           fit: BoxFit.cover),
                     ),
-                    child: const Text(
-                      'Namaste',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          child: Text(
+                            'Namaste',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Mooli'),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: Text(
+                            '\$10',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -139,17 +184,37 @@ class _UiPageState extends State<UiPage> {
                     height: 300,
                     width: 300,
                     padding: const EdgeInsets.all(20),
-                    alignment: Alignment.topRight,
+                    alignment: Alignment.topCenter,
                     decoration: const BoxDecoration(
                       color: Colors.green,
                       image: DecorationImage(
                           image: AssetImage('assets/sky.image.png'),
                           fit: BoxFit.cover),
                     ),
-                    child: const Text(
-                      'Namaste',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          child: Text(
+                            'Namaste',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Mooli',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: Text(
+                            '\$10,',
+                            style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
