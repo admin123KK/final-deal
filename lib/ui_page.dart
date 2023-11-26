@@ -53,8 +53,8 @@ class _UiPageState extends State<UiPage> {
           child: Row(
             children: [
               Container(
-                height: 400,
-                width: 400,
+                height: 300,
+                width: 300,
                 padding: const EdgeInsets.all(20),
                 alignment: Alignment.topLeft,
                 decoration: const BoxDecoration(
@@ -67,6 +67,7 @@ class _UiPageState extends State<UiPage> {
                   'Namaste',
                   style: TextStyle(color: Colors.white),
                 ),
+            
               ),
               const SizedBox(
                 width: 20,
@@ -74,8 +75,8 @@ class _UiPageState extends State<UiPage> {
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: Container(
-                  height: 400,
-                  width: 400,
+                  height: 300,
+                  width: 300,
                   padding: const EdgeInsets.all(20),
                   alignment: Alignment.topCenter,
                   decoration: const BoxDecoration(
@@ -84,23 +85,36 @@ class _UiPageState extends State<UiPage> {
                         image: AssetImage('assets/sky.image.png'),
                         fit: BoxFit.cover),
                   ),
-                  child: const Text(
-                    'Namaste',
-                    style: TextStyle(color: Colors.white),
+                  child:  const  Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                    
+                   child: Text(
+                        'Namaste',
+                        style: TextStyle(color: Colors.white),
+                      ),),
+               Align(
+                    alignment: Alignment.bottomRight,
+                    child: Text('\$10', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),),
+                   )
+                    ],
                   ),
+                
                 ),
               ),
               const SizedBox(
                 width: 20,
               ),
               SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
+                scrollDirection: Axis.horizontal,
                 child: Padding(
-                  
                   padding: const EdgeInsets.all(20),
                   child: Container(
-                    height: 400,
-                    width: 400,
+                    height: 300,
+                    width: 300,
                     padding: const EdgeInsets.all(20),
                     alignment: Alignment.topRight,
                     decoration: const BoxDecoration(
@@ -118,15 +132,14 @@ class _UiPageState extends State<UiPage> {
                 ),
               ),
               SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
+                scrollDirection: Axis.horizontal,
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Container(
-                    height: 400,
-                    width: 400,
+                    height: 300,
+                    width: 300,
                     padding: const EdgeInsets.all(20),
                     alignment: Alignment.topRight,
-                  
                     decoration: const BoxDecoration(
                       color: Colors.green,
                       image: DecorationImage(
@@ -163,13 +176,14 @@ Future<bool> showLogOutDialog(BuildContext context) {
               },
               child: const Text('Cancel')),
           TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(true);
-              },
-              child: const Text(
-                'Logout',
-                style: TextStyle(color: Colors.red),
-              ))
+            onPressed: () {
+              Navigator.of(context).pop(true);
+            },
+            child: const Text(
+              'Logout',
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
         ],
       );
     },
