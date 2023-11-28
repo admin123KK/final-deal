@@ -133,89 +133,82 @@ class _UiPageState extends State<UiPage> {
               const SizedBox(
                 width: 20,
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Padding(
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Container(
+                  height: 300,
+                  width: 300,
                   padding: const EdgeInsets.all(20),
-                  child: Container(
-                    height: 300,
-                    width: 300,
-                    padding: const EdgeInsets.all(20),
-                    alignment: Alignment.topCenter,
-                    decoration: const BoxDecoration(
-                      color: Colors.green,
-                      image: DecorationImage(
-                          image: AssetImage('assets/sky.image.png'),
-                          fit: BoxFit.cover),
-                    ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Align(
-                          child: Text(
-                            'Namaste',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Mooli'),
+                  alignment: Alignment.topCenter,
+                  decoration: const BoxDecoration(
+                    color: Colors.green,
+                    image: DecorationImage(
+                        image: AssetImage('assets/sky.image.png'),
+                        fit: BoxFit.cover),
+                  ),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Align(
+                        child: Text(
+                          'Namaste',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Mooli'),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Text(
+                          '\$10',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green,
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            '\$10',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.green,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Padding(
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Container(
+                  height: 300,
+                  width: 300,
                   padding: const EdgeInsets.all(20),
-                  child: Container(
-                    height: 300,
-                    width: 300,
-                    padding: const EdgeInsets.all(20),
-                    alignment: Alignment.topCenter,
-                    decoration: const BoxDecoration(
-                      color: Colors.green,
-                      image: DecorationImage(
-                          image: AssetImage('assets/sky.image.png'),
-                          fit: BoxFit.cover),
-                    ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Align(
-                          child: Text(
-                            'Namaste',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Mooli',
-                              fontWeight: FontWeight.bold,
-                            ),
+                  alignment: Alignment.topCenter,
+                  decoration: const BoxDecoration(
+                    color: Colors.green,
+                    image: DecorationImage(
+                        image: AssetImage('assets/sky.image.png'),
+                        fit: BoxFit.cover),
+                  ),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Align(
+                        child: Text(
+                          'Namaste',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Mooli',
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            '\$10,',
-                            style: TextStyle(
-                                color: Colors.green,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Text(
+                          '\$10,',
+                          style: TextStyle(
+                              color: Colors.green, fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ),
