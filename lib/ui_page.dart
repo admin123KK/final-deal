@@ -57,9 +57,10 @@ class _UiPageState extends State<UiPage> {
                 width: 300,
                 padding: const EdgeInsets.all(20),
                 alignment: Alignment.topCenter,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: Colors.green,
-                  image: DecorationImage(
+                  borderRadius: BorderRadius.circular(24),
+                  image: const DecorationImage(
                       image: AssetImage('assets/sky.image.png'),
                       fit: BoxFit.cover),
                 ),
@@ -98,9 +99,10 @@ class _UiPageState extends State<UiPage> {
                   width: 300,
                   padding: const EdgeInsets.all(20),
                   alignment: Alignment.topCenter,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.green,
-                    image: DecorationImage(
+                    borderRadius: BorderRadius.circular(20),
+                    image: const DecorationImage(
                         image: AssetImage('assets/sky.image.png'),
                         fit: BoxFit.cover),
                   ),
@@ -140,8 +142,9 @@ class _UiPageState extends State<UiPage> {
                   width: 300,
                   padding: const EdgeInsets.all(20),
                   alignment: Alignment.topCenter,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.green,
+                    borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
                         image: AssetImage('assets/sky.image.png'),
                         fit: BoxFit.cover),
@@ -180,8 +183,9 @@ class _UiPageState extends State<UiPage> {
                   width: 300,
                   padding: const EdgeInsets.all(20),
                   alignment: Alignment.topCenter,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.green,
+                    borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
                         image: AssetImage('assets/sky.image.png'),
                         fit: BoxFit.cover),
