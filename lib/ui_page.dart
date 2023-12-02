@@ -12,79 +12,250 @@ class UiPage extends StatefulWidget {
 
 class _UiPageState extends State<UiPage> {
   int pageNo = 0;
+  User?  user;
+
+  @override
+  void initState() {
+    super.initState();
+    
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color(0xFF00563B),
-          title: const Text(
-            'Ui Page',
-            style: TextStyle(color: Colors.white),
-          ),
-          actions: [
-            PopupMenuButton<MenuAction>(
-              onSelected: (value) async {
-                switch (value) {
-                  case MenuAction.logout:
-                    final shouldLogout = await showLogOutDialog(context);
-                    if (shouldLogout) {
-                      await FirebaseAuth.instance.signOut();
-
-                      Navigator.of(context)
-                          .pushNamedAndRemoveUntil('/LoginPage', (_) => false);
-                    }
-                }
-              },
-              itemBuilder: (context) {
-                return [
-                  PopupMenuItem<MenuAction>(
-                    value: MenuAction.logout,
-                    child: const Text('Logout'),
-                  )
-                ];
-              },
-            )
-          ],
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF00563B),
+        title: const Text(
+          'Ui Page',
+          style: TextStyle(color: Colors.white),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 30,
-                ),
-                const Row(
+        actions: [
+          PopupMenuButton<MenuAction>(
+            onSelected: (value) async {
+              switch (value) {
+                case MenuAction.logout:
+                  final shouldLogout = await showLogOutDialog(context);
+                  if (shouldLogout) {
+                    await FirebaseAuth.instance.signOut();
+
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil('/LoginPage', (_) => false);
+                  }
+              }
+            },
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem<MenuAction>(
+                  value: MenuAction.logout,
+                  child: const Text('Logout'),
+                )
+              ];
+            },
+          )
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              const Row(
+                children: [
+                  Text(
+                    'Welcome,',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
                   children: [
-                    Text(
-                      'Welcome,',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    Container(
+                      width: 300,
+                      height: 300,
+
+                      padding: const EdgeInsets.all(20),
+
+                      // margin: const EdgeInsets.all(10),
+                      alignment: Alignment.topCenter,
+
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: const DecorationImage(
+                            image: AssetImage('assets/sky.image.png'),
+                            fit: BoxFit.cover),
+                      ),
+
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: Text(
+                              'Namaste',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Mooli'),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 200,
+                          ),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.black87,
+                              child: Text(
+                                '\$10',
+                                style: TextStyle(
+                                  color: Colors.green,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Container(
+                            alignment: Alignment.topCenter,
+                            width: 300,
+                            height: 300,
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              image: const DecorationImage(
+                                  image: AssetImage('assets/sky.image.png'),
+                                  fit: BoxFit.cover),
+                            ),
+                            child: const Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.topCenter,
+                                    child: Text(
+                                      'Namaste',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'Mooli',
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 200,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.black87,
+                                      child: Text(
+                                        '\$10',
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                    ),
+                                  )
+                                ]),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Container(
+                            alignment: Alignment.topCenter,
+                            width: 300,
+                            height: 300,
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              image: const DecorationImage(
+                                  image: AssetImage('assets/sky.image.png'),
+                                  fit: BoxFit.cover),
+                            ),
+                            child: const Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.topCenter,
+                                    child: Text(
+                                      'Namaste',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'Mooli',
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 200,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.black87,
+                                      child: Text(
+                                        '\$10',
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                    ),
+                                  )
+                                ]),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 300,
-                        height: 300,
-
-                        padding: const EdgeInsets.all(20),
-
-                        // margin: const EdgeInsets.all(10),
-                        alignment: Alignment.topCenter,
-
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          image: const DecorationImage(
-                              image: AssetImage('assets/sky.image.png'),
-                              fit: BoxFit.cover),
-                        ),
-
-                        child: const Column(
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                    3,
+                    (index) => Container(
+                          margin: const EdgeInsets.all(4),
+                          child: const Icon(
+                            Icons.circle,
+                            size: 12.0,
+                          ),
+                        )),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Row(
+                  children: [
+                    Container(
+                      alignment: Alignment.topCenter,
+                      width: 300,
+                      height: 300,
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: const DecorationImage(
+                            image: AssetImage('assets/sky.image.png'),
+                            fit: BoxFit.cover),
+                      ),
+                      child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Align(
@@ -93,8 +264,8 @@ class _UiPageState extends State<UiPage> {
                                 'Namaste',
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Mooli'),
+                                    fontFamily: 'Mooli',
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                             SizedBox(
@@ -106,239 +277,85 @@ class _UiPageState extends State<UiPage> {
                                 backgroundColor: Colors.black87,
                                 child: Text(
                                   '\$10',
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                  ),
+                                  style: TextStyle(color: Colors.green),
                                 ),
                               ),
                             )
-                          ],
-                        ),
+                          ]),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Row(
+                  children: [
+                    Container(
+                      alignment: Alignment.topCenter,
+                      width: 300,
+                      height: 300,
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: const DecorationImage(
+                            image: AssetImage('assets/sky.image.png'),
+                            fit: BoxFit.cover),
                       ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
+                      child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
+                            Align(
                               alignment: Alignment.topCenter,
-                              width: 300,
-                              height: 300,
-                              padding: const EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                image: const DecorationImage(
-                                    image: AssetImage('assets/sky.image.png'),
-                                    fit: BoxFit.cover),
+                              child: Text(
+                                'Namaste',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Mooli',
+                                    fontWeight: FontWeight.bold),
                               ),
-                              child: const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Text(
-                                        'Namaste',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: 'Mooli',
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 200,
-                                    ),
-                                    Align(
-                                      alignment: Alignment.bottomRight,
-                                      child: CircleAvatar(
-                                        backgroundColor: Colors.black87,
-                                        child: Text(
-                                          '\$10',
-                                          style: TextStyle(color: Colors.green),
-                                        ),
-                                      ),
-                                    )
-                                  ]),
                             ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Container(
-                              alignment: Alignment.topCenter,
-                              width: 300,
-                              height: 300,
-                              padding: const EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                image: const DecorationImage(
-                                    image: AssetImage('assets/sky.image.png'),
-                                    fit: BoxFit.cover),
-                              ),
-                              child: const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Text(
-                                        'Namaste',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: 'Mooli',
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 200,
-                                    ),
-                                    Align(
-                                      alignment: Alignment.bottomRight,
-                                      child: CircleAvatar(
-                                        backgroundColor: Colors.black87,
-                                        child: Text(
-                                          '\$10',
-                                          style: TextStyle(color: Colors.green),
-                                        ),
-                                      ),
-                                    )
-                                  ]),
+                            SizedBox(
+                              height: 200,
                             ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                      3,
-                      (index) => Container(
-                            margin: const EdgeInsets.all(4),
-                            child: const Icon(
-                              Icons.circle,
-                              size: 12.0,
-                            ),
-                          )),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Row(
-                    children: [
-                      Container(
-                        alignment: Alignment.topCenter,
-                        width: 300,
-                        height: 300,
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          image: const DecorationImage(
-                              image: AssetImage('assets/sky.image.png'),
-                              fit: BoxFit.cover),
-                        ),
-                        child: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Align(
-                                alignment: Alignment.topCenter,
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.black87,
                                 child: Text(
-                                  'Namaste',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'Mooli',
-                                      fontWeight: FontWeight.bold),
+                                  '\$10',
+                                  style: TextStyle(color: Colors.green),
                                 ),
                               ),
-                              SizedBox(
-                                height: 200,
-                              ),
-                              Align(
-                                alignment: Alignment.bottomRight,
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.black87,
-                                  child: Text(
-                                    '\$10',
-                                    style: TextStyle(color: Colors.green),
-                                  ),
-                                ),
-                              )
-                            ]),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                    ],
-                  ),
+                            )
+                          ]),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Row(
-                    children: [
-                      Container(
-                        alignment: Alignment.topCenter,
-                        width: 300,
-                        height: 300,
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          image: const DecorationImage(
-                              image: AssetImage('assets/sky.image.png'),
-                              fit: BoxFit.cover),
-                        ),
-                        child: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Align(
-                                alignment: Alignment.topCenter,
-                                child: Text(
-                                  'Namaste',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'Mooli',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 200,
-                              ),
-                              Align(
-                                alignment: Alignment.bottomRight,
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.black87,
-                                  child: Text(
-                                    '\$10',
-                                    style: TextStyle(color: Colors.green),
-                                  ),
-                                ),
-                              )
-                            ]),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+      drawer: Drawer(
+        backgroundColor: const Color(0xFF00563B),
+        elevation: 0,
+        child:  ListView(padding: EdgeInsets.zero, children: [
+          DrawerHeader(
+            decoration: BoxDecoration(color: Colors.deepPurple),
+            child: const  Text('hi'),
+          )
+        ]),
+      ),
+    );
   }
 }
 
