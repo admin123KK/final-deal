@@ -11,6 +11,8 @@ class UiPage extends StatefulWidget {
 }
 
 class _UiPageState extends State<UiPage> {
+  int pageNo = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +57,11 @@ class _UiPageState extends State<UiPage> {
                 ),
                 const Row(
                   children: [
-                    Text('Welcome,'),
+                    Text(
+                      'Welcome,',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
                 SingleChildScrollView(
@@ -67,14 +73,17 @@ class _UiPageState extends State<UiPage> {
                         height: 300,
 
                         padding: const EdgeInsets.all(20),
+
                         // margin: const EdgeInsets.all(10),
                         alignment: Alignment.topCenter,
+
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           image: const DecorationImage(
                               image: AssetImage('assets/sky.image.png'),
                               fit: BoxFit.cover),
                         ),
+
                         child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -157,7 +166,8 @@ class _UiPageState extends State<UiPage> {
                       ),
                       const SizedBox(
                         width: 20,
-                      ),  SingleChildScrollView(
+                      ),
+                      SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
@@ -205,6 +215,21 @@ class _UiPageState extends State<UiPage> {
                       ),
                     ],
                   ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                      3,
+                      (index) => Container(
+                            margin: const EdgeInsets.all(4),
+                            child: const Icon(
+                              Icons.circle,
+                              size: 12.0,
+                            ),
+                          )),
                 ),
                 const SizedBox(
                   height: 20,
