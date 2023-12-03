@@ -12,12 +12,11 @@ class UiPage extends StatefulWidget {
 
 class _UiPageState extends State<UiPage> {
   int pageNo = 0;
-  User?  user;
+  User? user;
 
   @override
   void initState() {
     super.initState();
-    
   }
 
   @override
@@ -348,12 +347,19 @@ class _UiPageState extends State<UiPage> {
       drawer: Drawer(
         backgroundColor: const Color(0xFF00563B),
         elevation: 0,
-        child:  ListView(padding: EdgeInsets.zero, children: [
-          DrawerHeader(
-            decoration: BoxDecoration(color: Colors.deepPurple),
-            child: const  Text('hi'),
-          )
-        ]),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: const Text('Aakash Karki'),
+              accountEmail: const Text('karkiaku000@gmail.com'),
+              currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage(
+                'assets/nepal.png',
+              )),
+            ),
+          ],
+        ),
       ),
     );
   }
