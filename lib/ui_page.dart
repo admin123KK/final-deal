@@ -351,12 +351,125 @@ class _UiPageState extends State<UiPage> {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              accountName: const Text('Aakash Karki'),
-              accountEmail: const Text('karkiaku000@gmail.com'),
+              accountName: Text('Aakash Karki'),
+              accountEmail: Text('karkiaku000@gmail.com'),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/night.image.jpg'),
+                      fit: BoxFit.cover)),
               currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage(
-                'assets/nepal.png',
-              )),
+                foregroundImage: AssetImage('assets/nepal.png'),
+              ),
+            ),
+            InkWell(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UiPage()));
+                },
+                title: const Text(
+                  'Home',
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: const Icon(Icons.home),
+                iconColor: Colors.white,
+              ),
+            ),
+              InkWell(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UiPage()));
+                },
+                title: const Text(
+                  'Home',
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: const Icon(Icons.home),
+                iconColor: Colors.white,
+              ),
+            ),  InkWell(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UiPage()));
+                },
+                title: const Text(
+                  'Home',
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: const Icon(Icons.home),
+                iconColor: Colors.white,
+              ),
+            ),  InkWell(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UiPage()));
+                },
+                title: const Text(
+                  'Home',
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: const Icon(Icons.home),
+                iconColor: Colors.white,
+              ),
+            ),  InkWell(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UiPage()));
+                },
+                title: const Text(
+                  'Home',
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: const Icon(Icons.home),
+                iconColor: Colors.white,
+              ),
+            ),  InkWell(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UiPage()));
+                },
+                title: const Text(
+                  'Home',
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: const Icon(Icons.home),
+                iconColor: Colors.white,
+              ),
+            ),  InkWell(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UiPage()));
+                },
+                title: const Text(
+                  'Home',
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: const Icon(Icons.home),
+                iconColor: Colors.white,
+              ),
+            ),  InkWell(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UiPage()));
+                },
+                title: const Text(
+                  'Home',
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: const Icon(Icons.home),
+                iconColor: Colors.white,
+              ),
+            ),  InkWell(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> UiPage()));
+                },
+                title: const Text(
+                  'Home',
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: const Icon(Icons.home),
+                iconColor: Colors.white,
+              ),
             ),
           ],
         ),
